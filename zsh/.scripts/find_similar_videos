@@ -37,7 +37,6 @@ for file in input_files:
 
 length_video_tuples = []
 for k, v in sorted(videos.items(), key=lambda item: item[1]):
-	# print("{:.2f}".format(float(v)), k)
 	length_video_tuples.append((float(v), k))
 
 potential_duplicates = [
