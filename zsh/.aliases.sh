@@ -165,7 +165,7 @@ alias vlc=" vlc"
 
 # Screenshot
 ss() {
-	gnome-screenshot NUL -d "${1:-10}" &
+	gnome-screenshot NUL -d "${1:-2}" &
 }
 
 # Brightness
