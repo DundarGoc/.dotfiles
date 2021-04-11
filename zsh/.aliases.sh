@@ -255,3 +255,5 @@ lower() {
 }
 
 alias rename="perl-rename -i"
+
+alias detox="detox -s lower-only"
