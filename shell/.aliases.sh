@@ -78,9 +78,6 @@ alias svi='sudo $EDITOR'
 alias la="ls -A"
 alias ll="la -l"
 
-# Upgrade
-alias upgrade="$HOME/.dotfiles/.misc/upgrade"
-
 # goto
 alias d="cd $HOME/.dotfiles"
 alias c="cd $HOME/.dotfiles/config/.config"
