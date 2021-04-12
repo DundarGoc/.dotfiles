@@ -14,4 +14,4 @@ export VISUAL=nvim # Set neovim as default reader.
 # Change ls colors. Possible colors schemes: ayu, jellybeans, molokai, snazzy, solarized-dark, solarized-light.
 export LS_COLORS="$(vivid generate snazzy)"
 
-path+=($HOME/.dotfiles/zsh/.scripts)
+path+=($HOME/.dotfiles/bin/.bin)
