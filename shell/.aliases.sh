@@ -15,7 +15,6 @@ if [[ $(lsb_release -is) == ManjaroLinux ]]; then
 	alias show="yay -Si"
 	alias search="yay -Ss"
 	alias fsearch="yay -F"
-	alias list="reset; yay -Qe"
 	alias remove="yay -Rs"
 	alias mirror="sudo pacman-mirrors -id"
 	alias orphan='yay -Qdtq | yay -Rs -'
@@ -209,13 +208,6 @@ activate() {
 	fi
 
 	source $activate_file
-}
-
-# List explicitly installed packages by date.
-late() {
-	reset
-	output=$(expac -Qs --timefmt="%s" "%l %w %n  {%G}" | grep explicit | sort | awk '{printf "%-40s %-40s\n", $3, $4}')
-	echo $output
 }
 
 alias logout="loginctl terminate-user dundar"
