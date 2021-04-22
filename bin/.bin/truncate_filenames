@@ -2,7 +2,6 @@
 
 import os
 
-
 string_length = 0
 while True:
 	string_length += 1

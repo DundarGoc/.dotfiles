@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 import os
-import filetype
 
+import filetype
 
 for unparsed_file in os.scandir("."):
 	file = os.path.basename(unparsed_file.path)

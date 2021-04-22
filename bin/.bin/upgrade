@@ -1,11 +1,11 @@
 #!/usr/bin/env zsh
 
 pprint(){
-				printf "$* \n\n"
+	printf "$* \n\n"
 }
 
 println(){
-				printf "__________________________________________________ \n\n"
+	printf "__________________________________________________ \n\n"
 }
 
 source $HOME/.zinit/bin/zinit.zsh

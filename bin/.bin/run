@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-import sys
 import os
 import subprocess
+import sys
 
 executables = []
 for filename in os.listdir('.'):
