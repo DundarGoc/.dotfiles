@@ -5,7 +5,6 @@ import os
 import subprocess
 from pathlib import Path
 
-
 parser = argparse.ArgumentParser()
 parser.add_argument("input_files", nargs="*")
 args = parser.parse_args()
@@ -16,6 +15,9 @@ write_to_file = ""
 for f in input_files:
 	write_to_file += "file '" + f + "'\n"
 
-Path("tmp").write_text(write_to_file)
+tmp_path = Path("tmp")
+tmp_path.write_text(write_to_file)
 
 subprocess.call(["ffmpeg", "-f", "concat", "-i", "tmp", "-codec", "copy", "output.mp4"])
+
+tmp_path.unlink(missing_ok=True)
