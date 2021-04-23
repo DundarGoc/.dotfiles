@@ -3,13 +3,7 @@
 import argparse
 import os
 import subprocess
-import tempfile
-
-
-def run(unparsed_arguments):
-	arguments = unparsed_arguments.split()
-	command = subprocess.check_output(arguments, text=True)
-	return command
+from pathlib import Path
 
 
 parser = argparse.ArgumentParser()
@@ -18,13 +12,10 @@ args = parser.parse_args()
 
 input_files = args.input_files
 
-fd, path = tempfile.mkstemp()
-try:
-	with os.fdopen(fd, "w") as tmp:
-		for f in input_files:
-			tmp.write("file '" + f + "'\n")
-	run("ffmpeg -f concat -i " + path + " -codec copy output.mp4")
-finally:
-	os.remove(path)
+write_to_file = ""
+for f in input_files:
+	write_to_file += "file '" + f + "'\n"
 
-print(os.getcwd())
+Path("tmp").write_text(write_to_file)
+
+subprocess.call(["ffmpeg", "-f", "concat", "-i", "tmp", "-codec", "copy", "output.mp4"])
