@@ -3,7 +3,7 @@
 ex() {
 	# # ex - archive extractor
 	# # usage: ex <file>
-	if [[ -f "$1" ]]; then
+	if [[ -f $1 ]]; then
 		case $1 in
 		*.tar.bz2) tar xjf "$1" ;;
 		*.tar.gz) tar xzf "$1" ;;
@@ -35,7 +35,7 @@ EnableColors() {
 	local match_lhs=""
 	[[ -f ~/.dir_colors ]] && match_lhs="${match_lhs}$(<~/.dir_colors)"
 	[[ -f /etc/DIR_COLORS ]] && match_lhs="${match_lhs}$(</etc/DIR_COLORS)"
-	[[ -z "${match_lhs}" ]] &&
+	[[ -z ${match_lhs} ]] &&
 		type -P dircolors >/dev/null &&
 		match_lhs=$(dircolors --print-database)
 	[[ $'\n'${match_lhs} == *$'\n'"TERM "${safe_term}* ]] && use_color=true
