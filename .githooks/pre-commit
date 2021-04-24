@@ -3,6 +3,8 @@
 import subprocess
 import os
 
+EXCLUDE_DIRECTORIES = [".git"]
+
 
 pre_commit_shell_path = os.path.join(os.path.dirname(__file__), "pre-commit-shell")
 subprocess.call([pre_commit_shell_path])
@@ -14,7 +16,8 @@ root_directory = subprocess.check_output(
 ).strip()
 
 for dirpath, dirnames, filenames in os.walk(root_directory):
-	dirnames[:] = [d for d in dirnames if d != ".git"]
+	dirnames[:] = [d for d in dirnames if d not in EXCLUDE_DIRECTORIES]
+	# print(dirpath, dirnames, filenames)
 
 	for filename in filenames:
 		file_path = os.path.join(dirpath, filename)
