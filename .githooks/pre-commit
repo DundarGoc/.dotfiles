@@ -2,6 +2,7 @@
 
 import subprocess
 import os
+import magic
 
 
 def main():
@@ -22,9 +23,7 @@ def main():
 
 		for filename in filenames:
 			file_path = os.path.join(dirpath, filename)
-			filetype = subprocess.check_output(["file", file_path], text=True).split(
-				":"
-			)[1]
+			filetype = magic.detect_from_filename(file_path).name
 
 			if "shell" in filetype:
 				shell_scripts.append(file_path)
