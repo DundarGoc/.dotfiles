@@ -8,9 +8,6 @@ import magic
 def main():
 	EXCLUDE_DIRECTORIES = [".git"]
 
-	pre_commit_shell_path = os.path.join(os.path.dirname(__file__), "pre-commit-shell")
-	subprocess.call([pre_commit_shell_path])
-
 	shell_scripts = []
 
 	root_directory = subprocess.check_output(
