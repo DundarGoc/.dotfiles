@@ -3,28 +3,35 @@
 import subprocess
 import os
 
-EXCLUDE_DIRECTORIES = [".git"]
+
+def main():
+	EXCLUDE_DIRECTORIES = [".git"]
+
+	pre_commit_shell_path = os.path.join(os.path.dirname(__file__), "pre-commit-shell")
+	subprocess.call([pre_commit_shell_path])
+
+	shell_scripts = []
+
+	root_directory = subprocess.check_output(
+		["git", "rev-parse", "--show-toplevel"], text=True
+	).strip()
+
+	for dirpath, dirnames, filenames in os.walk(root_directory):
+		dirnames[:] = [d for d in dirnames if d not in EXCLUDE_DIRECTORIES]
+		# print(dirpath, dirnames, filenames)
+
+		for filename in filenames:
+			file_path = os.path.join(dirpath, filename)
+			filetype = subprocess.check_output(["file", file_path], text=True).split(
+				":"
+			)[1]
+
+			if "shell" in filetype:
+				shell_scripts.append(file_path)
+
+	subprocess.call(["shfmt", "-w", "-s"] + shell_scripts)
+	subprocess.call(["git", "add", "-A"])
 
 
-pre_commit_shell_path = os.path.join(os.path.dirname(__file__), "pre-commit-shell")
-subprocess.call([pre_commit_shell_path])
-
-shell_scripts = []
-
-root_directory = subprocess.check_output(
-	["git", "rev-parse", "--show-toplevel"], text=True
-).strip()
-
-for dirpath, dirnames, filenames in os.walk(root_directory):
-	dirnames[:] = [d for d in dirnames if d not in EXCLUDE_DIRECTORIES]
-	# print(dirpath, dirnames, filenames)
-
-	for filename in filenames:
-		file_path = os.path.join(dirpath, filename)
-		filetype = subprocess.check_output(["file", file_path], text=True).split(":")[1]
-
-		if "shell" in filetype:
-			shell_scripts.append(file_path)
-
-subprocess.call(["shfmt", "-w", "-s"] + shell_scripts)
-subprocess.call(["git", "add", "-A"])
+if __name__ == "__main__":
+	main()
