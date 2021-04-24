@@ -191,7 +191,7 @@ alias path="tr ':' '\n' <<< $PATH | sort"
 alias fpath="tr ':' '\n' <<< $FPATH | sort"
 
 # allow sudo to expand aliases as well as run anything in $PATH
-alias sudo='sudo env PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"  '
+alias sudo='sudo env PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"	'
 
 # Function for quick virtual environment activation.
 activate() {
@@ -247,3 +247,9 @@ lower() {
 alias rename="perl-rename -i"
 
 alias detox="detox -s lower"
+
+vmprof() {
+	python -m vmprof --lines -o results.dat pre-commit
+	vmprofshow --lines results.dat | less
+	rm -f results.dat
+}
