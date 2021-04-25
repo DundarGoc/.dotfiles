@@ -4,15 +4,21 @@ import os
 
 import filetype
 
-for unparsed_file in os.scandir("."):
-	file = os.path.basename(unparsed_file.path)
 
-	if not os.path.isfile(file):
-		continue
+def main():
+	for unparsed_file in os.scandir("."):
+		file = os.path.basename(unparsed_file.path)
 
-	kind = filetype.guess(file)
-	if kind is not None:
-		file_no_suffix = file.split(".")[0]
-		file_real_suffix = file_no_suffix + "." + kind.extension
-		if not os.path.isfile(file_real_suffix):
-			os.rename(file, file_real_suffix)
+		if not os.path.isfile(file):
+			continue
+
+		kind = filetype.guess(file)
+		if kind is not None:
+			file_no_suffix = file.split(".")[0]
+			file_real_suffix = file_no_suffix + "." + kind.extension
+			if not os.path.isfile(file_real_suffix):
+				os.rename(file, file_real_suffix)
+
+
+if __name__ == "__main__":
+	main()
