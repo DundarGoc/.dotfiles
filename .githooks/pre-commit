@@ -27,8 +27,6 @@ def format_python_scripts(python_scripts):
 
 
 def main():
-	EXCLUDE_DIRECTORIES = [".git"]
-
 	shell_scripts = []
 	python_scripts = []
 
