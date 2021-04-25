@@ -3,6 +3,7 @@
 import subprocess
 import os
 import magic
+import sys
 from pathlib import Path
 
 
@@ -36,6 +37,9 @@ def main():
 	git_status_output = subprocess.check_output(
 		["git", "status", "--porcelain"], text=True
 	).strip()
+
+	if not git_status_output:
+		sys.exit()
 
 	changed_files_relative = [
 		i.split()[1] for i in git_status_output.split("\n") if i.split()[0] != "D"
