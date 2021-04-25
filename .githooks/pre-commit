@@ -14,18 +14,25 @@ def main():
 		["git", "rev-parse", "--show-toplevel"], text=True
 	).strip()
 
-	for dirpath, dirnames, filenames in os.walk(root_directory):
-		dirnames[:] = [d for d in dirnames if d not in EXCLUDE_DIRECTORIES]
-		# print(dirpath, dirnames, filenames)
+	git_status_output = subprocess.check_output(
+		["git", "status", "--porcelain"], text=True
+	).strip()
 
-		for filename in filenames:
-			file_path = os.path.join(dirpath, filename)
-			filetype = magic.detect_from_filename(file_path).name
+	changed_files_relative = [
+		i.split()[1] for i in git_status_output.split("\n") if i.split()[0] != "D"
+	]
 
-			if "shell" in filetype:
-				shell_scripts.append(file_path)
+	changed_files = [os.path.join(root_directory, i) for i in changed_files_relative]
 
-	subprocess.call(["shfmt", "-w", "-s"] + shell_scripts)
+	for changed_file in changed_files:
+		filetype = magic.detect_from_filename(changed_file).name
+
+		if "shell" in filetype:
+			shell_scripts.append(changed_file)
+
+	if shell_scripts:
+		subprocess.call(["shfmt", "-w", "-s"] + shell_scripts)
+
 	subprocess.call(["git", "add", "-A"])
 
 
