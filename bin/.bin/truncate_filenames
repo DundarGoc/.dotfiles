@@ -2,18 +2,24 @@
 
 import os
 
-string_length = 0
-while True:
-	string_length += 1
-	files = [f[:string_length] for f in os.listdir(os.curdir) if os.path.isfile(f)]
-	if len(files) == len(set(files)):
-		break
 
-for unparsed_file in os.scandir("."):
-	file = os.path.basename(unparsed_file.path)
+def main():
+	string_length = 0
+	while True:
+		string_length += 1
+		files = [f[:string_length] for f in os.listdir(os.curdir) if os.path.isfile(f)]
+		if len(files) == len(set(files)):
+			break
 
-	if not os.path.isfile(file):
-		continue
+	for unparsed_file in os.scandir("."):
+		file = os.path.basename(unparsed_file.path)
 
-	if not os.path.isfile(file[:string_length]):
-		os.rename(file, file[:string_length])
+		if not os.path.isfile(file):
+			continue
+
+		if not os.path.isfile(file[:string_length]):
+			os.rename(file, file[:string_length])
+
+
+if __name__ == "__main__":
+	main()
