@@ -5,19 +5,25 @@ import os
 import subprocess
 from pprint import pprint
 
-parser = argparse.ArgumentParser()
-parser.add_argument("accuracy")
-args = parser.parse_args()
 
-potential_duplicates = subprocess.check_output(
-	["findimagedupes", "-R", "-q", "-t", args.accuracy, "."], text=True
-)
+def main():
+	parser = argparse.ArgumentParser()
+	parser.add_argument("accuracy")
+	args = parser.parse_args()
 
-for duplicateSet in potential_duplicates.strip().split("\n"):
-	if not duplicateSet:
-		continue
-	current_folder = os.getcwd()
-	duplicate_array = duplicateSet.split()
-	pprint([i.replace(current_folder + "/", "") for i in duplicate_array])
+	potential_duplicates = subprocess.check_output(
+		["findimagedupes", "-R", "-q", "-t", args.accuracy, "."], text=True
+	)
 
-	subprocess.call(["viewnior"] + duplicate_array)
+	for duplicateSet in potential_duplicates.strip().split("\n"):
+		if not duplicateSet:
+			continue
+		current_folder = os.getcwd()
+		duplicate_array = duplicateSet.split()
+		pprint([i.replace(current_folder + "/", "") for i in duplicate_array])
+
+		subprocess.call(["viewnior"] + duplicate_array)
+
+
+if __name__ == "__main__":
+	main()

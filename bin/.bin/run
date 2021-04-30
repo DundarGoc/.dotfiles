@@ -4,12 +4,18 @@ import os
 import subprocess
 import sys
 
-executables = []
-for filename in os.listdir('.'):
-	if os.path.isfile(filename) and os.access(filename, os.X_OK):
-		executables.append(os.path.abspath(filename))
 
-if len(executables)>1:
-	sys.exit("Too many executables. Abort.")
+def main():
+	executables = []
+	for filename in os.listdir("."):
+		if os.path.isfile(filename) and os.access(filename, os.X_OK):
+			executables.append(os.path.abspath(filename))
 
-subprocess.call([executables[0]])
+	if len(executables) > 1:
+		sys.exit("Too many executables. Abort.")
+
+	subprocess.call([executables[0]])
+
+
+if __name__ == "__main__":
+	main()
