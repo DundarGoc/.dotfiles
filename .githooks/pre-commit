@@ -4,17 +4,22 @@ import os
 import shutil
 import subprocess
 import sys
+import shutil
 
 
 def format_shell_scripts(shell_scripts):
 	if shell_scripts:
-		subprocess.call(["shfmt", "-w", "-s"] + shell_scripts)
+		if shutil.which("shfmt") is not None:
+			subprocess.call(["shfmt", "-w", "-s"] + shell_scripts)
 
 
 def format_python_scripts(python_scripts):
 	if python_scripts:
-		subprocess.call(["isort"] + python_scripts)
-		subprocess.call(["black"] + python_scripts)
+		if shutil.which("isort") is not None:
+			subprocess.call(["isort"] + python_scripts)
+
+		if shutil.which("black") is not None:
+			subprocess.call(["black"] + python_scripts)
 
 	for script in python_scripts:
 		unexpanded_script = subprocess.check_output(
