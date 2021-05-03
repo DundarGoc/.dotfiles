@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
 import argparse
+import os
 import subprocess
+import sys
 from pathlib import Path
 
 
@@ -21,7 +23,7 @@ def main():
 	tmp_path = Path("tmp")
 	tmp_path.write_text(write_to_file)
 
-	output_path = ".".join(["output", extensions.pop()])
+	output_path = os.path.commonprefix(input_files) + "." + extensions.pop()
 
 	subprocess.call(
 		[
