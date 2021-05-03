@@ -24,7 +24,20 @@ def main():
 	output_path = ".".join(["output", extensions.pop()])
 
 	subprocess.call(
-		["ffmpeg", "-f", "concat", "-i", "tmp", "-codec", "copy", output_path]
+		[
+			"ffmpeg",
+			"-guess_layout_max",
+			"0",
+			"-fflags",
+			"+genpts",
+			"-f",
+			"concat",
+			"-i",
+			"tmp",
+			"-codec",
+			"copy",
+			output_path,
+		]
 	)
 
 	tmp_path.unlink(missing_ok=True)
