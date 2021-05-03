@@ -4,7 +4,6 @@ import os
 import shutil
 import subprocess
 import sys
-import shutil
 
 
 def format_shell_scripts(shell_scripts):
@@ -26,8 +25,8 @@ def format_python_scripts(python_scripts):
 			["unexpand", "--first-only", "-t4", script], universal_newlines=True
 		)
 
-		with open(script, "w") as f:
-			f.write(unexpanded_script)
+		with open(script, "w") as file:
+			file.write(unexpanded_script)
 
 
 def main():
