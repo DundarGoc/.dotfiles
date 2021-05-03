@@ -15,12 +15,15 @@ def main():
 		["findimagedupes", "-R", "-q", "-t", args.accuracy, "."], text=True
 	)
 
+	current_folder_path = os.getcwd() + os.sep
+	potential_duplicates = potential_duplicates.replace(current_folder_path, "")
+
 	for duplicateSet in potential_duplicates.strip().split("\n"):
+		print(duplicateSet)
 		if not duplicateSet:
 			continue
-		current_folder = os.getcwd()
 		duplicate_array = duplicateSet.split()
-		pprint([i.replace(current_folder + "/", "") for i in duplicate_array])
+		pprint([i.replace(current_folder_path, "") for i in duplicate_array])
 
 		subprocess.call(["viewnior"] + duplicate_array)
 
