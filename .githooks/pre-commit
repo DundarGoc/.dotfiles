@@ -22,23 +22,29 @@ def format_shell_scripts(shell_scripts):
 
 def format_python_scripts(python_scripts):
 	"""
-	Format modified python scripts with isort and then black if possible.
-	Also convert spaces to tabs if black was used.
+	Format modified python scripts with isort and black if possible.
 	"""
 	if python_scripts:
 		if shutil.which("isort") is not None:
 			subprocess.call(["isort"] + python_scripts)
 
 		if shutil.which("black") is not None:
-			subprocess.call(["black"] + python_scripts)
+			format_python_scripts_with_black(python_scripts)
 
-			for script in python_scripts:
-				unexpanded_script = subprocess.check_output(
-					["unexpand", "--first-only", "-t4", script], universal_newlines=True
-				)
 
-				with open(script, "w") as file:
-					file.write(unexpanded_script)
+def format_python_scripts_with_black(python_scripts):
+	"""
+	Format modified python scripts with black and convert spaces to tabs.
+	"""
+	subprocess.call(["black"] + python_scripts)
+
+	for script in python_scripts:
+		unexpanded_script = subprocess.check_output(
+			["unexpand", "--first-only", "-t4", script], universal_newlines=True
+		)
+
+		with open(script, "w") as file:
+			file.write(unexpanded_script)
 
 
 def main():
