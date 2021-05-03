@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+"""
+This is an example pre-commit hook that I like to use. It currently formats all modified
+shell and python scripts, but I'm sure I'll add formatting for other file types in the
+future.
+"""
 
 import os
 import shutil
@@ -7,12 +12,19 @@ import sys
 
 
 def format_shell_scripts(shell_scripts):
+	"""
+	Format modified shell scripts with shfmt (if possible).
+	"""
 	if shell_scripts:
 		if shutil.which("shfmt") is not None:
 			subprocess.call(["shfmt", "-w", "-s"] + shell_scripts)
 
 
 def format_python_scripts(python_scripts):
+	"""
+	Format modified python scripts with isort and then black if possible.
+	Also convert spaces to tabs if black was used.
+	"""
 	if python_scripts:
 		if shutil.which("isort") is not None:
 			subprocess.call(["isort"] + python_scripts)
@@ -20,13 +32,13 @@ def format_python_scripts(python_scripts):
 		if shutil.which("black") is not None:
 			subprocess.call(["black"] + python_scripts)
 
-	for script in python_scripts:
-		unexpanded_script = subprocess.check_output(
-			["unexpand", "--first-only", "-t4", script], universal_newlines=True
-		)
+			for script in python_scripts:
+				unexpanded_script = subprocess.check_output(
+					["unexpand", "--first-only", "-t4", script], universal_newlines=True
+				)
 
-		with open(script, "w") as file:
-			file.write(unexpanded_script)
+				with open(script, "w") as file:
+					file.write(unexpanded_script)
 
 
 def main():
