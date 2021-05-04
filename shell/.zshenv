@@ -14,4 +14,5 @@ export VISUAL=nvim # Set neovim as default reader.
 # Change ls colors. Possible colors schemes: ayu, jellybeans, molokai, snazzy, solarized-dark, solarized-light.
 export LS_COLORS="$(vivid generate snazzy)"
 
-path+=($HOME/.dotfiles/bin/.bin)
+GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+path+=("$HOME/.dotfiles/bin/.bin" "$GEM_HOME/bin")
