@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-This is an example pre-commit hook that I like to use. It currently formats all modified
+This is a pre-commit hook that I like to use. It currently formats all modified
 shell and python scripts, but I'm sure I'll add formatting for other file types in the
 future.
 """
