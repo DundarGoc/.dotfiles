@@ -55,7 +55,7 @@ colorscheme OceanicNext
 "------------------------------------
 "Other settings
 
-noremap <F3> :Autoformat <bar> :retab!<CR>
+noremap <F3> :Autoformat<CR>
 noremap <F5> :Neomake<CR>
 noremap <F8> :lnext<CR>
 noremap <S-F8> :lprev<CR>
