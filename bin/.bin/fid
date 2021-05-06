@@ -18,7 +18,7 @@ def main():
 	current_folder_path = os.getcwd() + os.sep
 	potential_duplicates = potential_duplicates.replace(current_folder_path, "")
 
-	for duplicateSet in potential_duplicates.strip().split("\n"):
+	for duplicateSet in potential_duplicates.splitlines():
 		print(duplicateSet)
 		if not duplicateSet:
 			continue
