@@ -2,7 +2,7 @@
 
 # Distro-specific
 if [[ $(lsb_release -is) == ManjaroLinux ]]; then
-	alias ls="$HOME/.dotfiles/.misc/ls --color=auto --group-directories-first -X"
+	alias ls="ls --color=auto --group-directories-first -X"
 
 	install() {
 		if pacman -Sqi $@ &>/dev/null; then
