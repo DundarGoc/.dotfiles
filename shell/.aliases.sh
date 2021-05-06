@@ -2,7 +2,7 @@
 
 # Distro-specific
 if [[ $(lsb_release -is) == ManjaroLinux ]]; then
-	alias ls="ls --color=auto --group-directories-first -X"
+	alias ls="exa"
 
 	install() {
 		if pacman -Sqi $@ &>/dev/null; then
@@ -75,7 +75,7 @@ alias vi='$EDITOR'
 alias svi='sudo $EDITOR'
 
 #ls
-alias la="ls -A"
+alias la="ls -a"
 alias ll="la -l"
 
 # goto

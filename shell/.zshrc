@@ -49,4 +49,4 @@ source ~/.zinit.zsh
 source ~/.aliases.sh
 
 # Automatically run ls after using cd.
-function chpwd() {ls -A}
+function chpwd() {la}
