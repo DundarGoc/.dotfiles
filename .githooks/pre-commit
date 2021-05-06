@@ -70,7 +70,7 @@ def main():
 
 	for changed_file in changed_files:
 		filetype = subprocess.check_output(
-			["file", changed_file], universal_newlines=True
+			["file", "-b", changed_file], universal_newlines=True
 		).lower()
 
 		if "shell" in filetype:
