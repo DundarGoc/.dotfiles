@@ -3,11 +3,7 @@
 alias ls="exa"
 
 install() {
-	if pacman -Sqi $@ &>/dev/null; then
-		sudo powerpill -S --needed $@
-	else
-		yay -S --needed --nocleanmenu --nodiffmenu --removemake $@
-	fi
+	$HOME/.dotfiles/bin/.bin/install "$@"
 }
 
 alias show="yay -Si"
