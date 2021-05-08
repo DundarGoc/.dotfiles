@@ -23,7 +23,7 @@ def main():
 	tmp_path = Path("tmp")
 	tmp_path.write_text(write_to_file)
 
-	output_path = os.path.commonprefix(input_files) + "." + extensions.pop()
+	output_path = os.path.commonprefix(input_files).rstrip("_") + "." + extensions.pop()
 
 	subprocess.call(
 		[
