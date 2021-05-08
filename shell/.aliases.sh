@@ -1,34 +1,21 @@
 #!/bin/bash
 
-# Distro-specific
-if [[ $(lsb_release -is) == ManjaroLinux ]]; then
-	alias ls="exa"
+alias ls="exa"
 
-	install() {
-		if pacman -Sqi $@ &>/dev/null; then
-			sudo powerpill -S --needed $@
-		else
-			yay -S --needed --nocleanmenu --nodiffmenu --removemake $@
-		fi
-	}
-
-	alias show="yay -Si"
-	alias search="yay -Ss"
-	alias fsearch="yay -F"
-	alias remove="yay -Rs"
-	alias mirror="sudo pacman-mirrors -id"
-	alias orphan='yay -Qdtq | yay -Rs -'
-else
-	# Ubuntu
-	alias ls="ls --color"
-	alias install="sudo apt install"
-
-	# WSL - i.e. running Ubuntu through Windows.
-	if [[ $(uname -r) =~ Microsoft$ ]]; then
-		alias cd2="cd /mnt/c/Users/gocdu/"
-		alias cd3="cd /mnt/c/Users/gocdu/Desktop/cmt"
+install() {
+	if pacman -Sqi $@ &>/dev/null; then
+		sudo powerpill -S --needed $@
+	else
+		yay -S --needed --nocleanmenu --nodiffmenu --removemake $@
 	fi
-fi
+}
+
+alias show="yay -Si"
+alias search="yay -Ss"
+alias fsearch="yay -F"
+alias remove="yay -Rs"
+alias mirror="sudo pacman-mirrors -id"
+alias orphan='yay -Qdtq | yay -Rs -'
 
 # git
 alias gac="git add .; git commit"
