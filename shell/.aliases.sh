@@ -6,7 +6,7 @@ if [[ $(lsb_release -is) == ManjaroLinux ]]; then
 
 	install() {
 		if pacman -Sqi $@ &>/dev/null; then
-			sudo powerpill -S $@
+			sudo powerpill -S --needed $@
 		else
 			yay -S --needed --nocleanmenu --nodiffmenu --removemake $@
 		fi
