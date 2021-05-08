@@ -132,7 +132,7 @@ chrome() {
 }
 
 # rmdir
-alias rmd="find . -empty -delete"
+alias rmd="rmdir * 2>/dev/null"
 
 # Restore dotfiles
 alias restore="pushd -q && cd -q ~/.dotfiles && git checkout . && popd -q && reload"
