@@ -19,13 +19,12 @@ def main():
 	potential_duplicates = potential_duplicates.replace(current_folder_path, "")
 
 	for duplicateSet in potential_duplicates.splitlines():
-		print(duplicateSet)
 		if not duplicateSet:
 			continue
 		duplicate_array = duplicateSet.split()
 		pprint([i.replace(current_folder_path, "") for i in duplicate_array])
 
-		subprocess.call(["viewnior"] + duplicate_array)
+		subprocess.call(["meh"] + duplicate_array)
 
 
 if __name__ == "__main__":
