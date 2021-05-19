@@ -13,6 +13,7 @@
 	autoupdate = true
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
+	hooksPath = /home/dundar/.dotfiles/.githooks
 [color]
 	ui = true
 [color "diff-highlight"]
