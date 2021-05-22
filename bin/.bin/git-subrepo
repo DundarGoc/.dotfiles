@@ -52,7 +52,9 @@ def pull(args):
 			"--squash",
 			"--allow-unrelated-histories",
 			"{}/master".format(remote_nickname),
-		]
+		],
+		stdout=DEVNULL,
+		stderr=DEVNULL,
 	)
 
 	subprocess.call(["git", "reset"])
