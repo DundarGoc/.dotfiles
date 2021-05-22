@@ -23,6 +23,10 @@ alias gbD="git branch -D"
 gbdr() {
 	git push origin --delete "$@"
 }
+gbdd() {
+	git push origin --delete "$@"
+	git branch --delete "$@"
+}
 alias gc="git commit"
 alias gcd="cd-gitroot"
 alias gdc="forgit::diff"
