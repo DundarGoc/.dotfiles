@@ -65,12 +65,12 @@ def main():
 	subparser_add = subparsers.add_parser("add")
 	subparser_add.add_argument("remote_url")
 
-	subparser_add = subparsers.add_parser("clone")
-	subparser_add.add_argument("remote_nickname")
-	subparser_add.add_argument("--include_gitignore", action="store_true")
+	subparser_clone = subparsers.add_parser("clone")
+	subparser_clone.add_argument("remote_nickname")
+	subparser_clone.add_argument("--include_gitignore", action="store_true")
 
-	subparser_add = subparsers.add_parser("pull")
-	subparser_add.add_argument("remote_nickname")
+	subparser_pull = subparsers.add_parser("pull")
+	subparser_pull.add_argument("remote_nickname")
 
 	args = parser.parse_args()
 
