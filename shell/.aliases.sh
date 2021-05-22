@@ -50,6 +50,7 @@ alias gpf='git push --force-with-lease'
 alias gpf!='git push --force'
 alias gpt="git push --tags"
 alias gr="git remote"
+alias grr="git remote remove"
 alias gra="git rebase --abort "
 alias gres="git reset ."
 gri() {
