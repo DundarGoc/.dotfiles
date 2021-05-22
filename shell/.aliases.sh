@@ -45,6 +45,7 @@ alias glr="forgit::log HEAD..origin"
 alias gp="git push"
 alias gpa="git push --all"
 alias gpl="git pull"
+alias gpla="git pull --all"
 alias gpf='git push --force-with-lease'
 alias gpf!='git push --force'
 alias gpt="git push --tags"
