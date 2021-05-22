@@ -13,6 +13,22 @@ def add(args):
 	subprocess.call(["git", "remote", "add", "-f", "--no-tags", name, remote_url])
 
 
+def clone(args):
+	remote_nickname = args.remote_nickname
+	prefix_name = remote_nickname
+	subprocess.call(
+		[
+			"git",
+			"read-tree",
+			"--prefix={}".format(prefix_name),
+			"-u",
+			"{}/master".format(remote_nickname),
+		]
+	)
+
+	subprocess.call(["git", "reset"])
+
+
 def main():
 	parser = argparse.ArgumentParser()
 	subparsers = parser.add_subparsers(dest="command")
@@ -20,10 +36,15 @@ def main():
 	subparser_add = subparsers.add_parser("add")
 	subparser_add.add_argument("remote_url")
 
+	subparser_add = subparsers.add_parser("clone")
+	subparser_add.add_argument("remote_nickname")
+
 	args = parser.parse_args()
 
 	if args.command == "add":
 		add(args)
+	elif args.command == "clone":
+		clone(args)
 
 
 if __name__ == "__main__":
