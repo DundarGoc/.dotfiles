@@ -87,6 +87,7 @@ alias nvimrc='$EDITOR $HOME/.config/nvim/init.vim'
 alias bsprc='$EDITOR $HOME/.config/bspwm/bspwmrc'
 alias sxhrc='$EDITOR $HOME/.config/sxhkd/sxhkdrc'
 alias trc='$EDITOR $HOME/.tmux.conf'
+alias gconf='$EDITOR $HOME/.gitconfig'
 
 # reload current shell
 if [ -n "$ZSH_VERSION" ]; then
