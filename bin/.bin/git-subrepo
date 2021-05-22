@@ -43,6 +43,9 @@ def clone(args):
 def pull(args):
 	remote_nickname = args.remote_nickname
 	prefix_name = remote_nickname
+
+	subprocess.call(["git", "fetch", "--all"])
+
 	subprocess.call(
 		[
 			"git",
