@@ -29,6 +29,24 @@ def clone(args):
 	subprocess.call(["git", "reset"])
 
 
+def pull(args):
+	remote_nickname = args.remote_nickname
+	prefix_name = remote_nickname
+	subprocess.call(
+		[
+			"git",
+			"merge",
+			"-s",
+			"subtree",
+			"--squash",
+			"--allow-unrelated-histories",
+			"{}/master".format(remote_nickname),
+		]
+	)
+
+	subprocess.call(["git", "reset"])
+
+
 def main():
 	parser = argparse.ArgumentParser()
 	subparsers = parser.add_subparsers(dest="command")
@@ -39,12 +57,17 @@ def main():
 	subparser_add = subparsers.add_parser("clone")
 	subparser_add.add_argument("remote_nickname")
 
+	subparser_add = subparsers.add_parser("pull")
+	subparser_add.add_argument("remote_nickname")
+
 	args = parser.parse_args()
 
 	if args.command == "add":
 		add(args)
 	elif args.command == "clone":
 		clone(args)
+	elif args.command == "pull":
+		pull(args)
 
 
 if __name__ == "__main__":
