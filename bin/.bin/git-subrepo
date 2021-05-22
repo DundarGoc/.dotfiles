@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+
+import argparse
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+
+def add(args):
+	remote_url = args.remote_url
+	name = remote_url.split("/")[-1].rstrip(".git")
+	subprocess.call(["git", "remote", "add", "-f", "--no-tags", name, remote_url])
+
+
+def main():
+	parser = argparse.ArgumentParser()
+	subparsers = parser.add_subparsers(dest="command")
+
+	subparser_add = subparsers.add_parser("add")
+	subparser_add.add_argument("remote_url")
+
+	args = parser.parse_args()
+
+	if args.command == "add":
+		add(args)
+
+
+if __name__ == "__main__":
+	main()
