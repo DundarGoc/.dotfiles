@@ -52,6 +52,7 @@ alias gpt="git push --tags"
 alias gr="git remote"
 alias grr="git remote remove"
 alias gra="git rebase --abort "
+alias groot="git rebase --root -i"
 alias gres="git reset ."
 gri() {
 	git rebase -i HEAD~"${1:-10}"
