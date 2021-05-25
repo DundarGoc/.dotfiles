@@ -1,0 +1,94 @@
+#!/usr/bin/env python3
+
+import argparse
+import os
+import subprocess
+from pathlib import Path
+from pprint import pprint
+
+import selenium
+from bs4 import BeautifulSoup
+from selenium import webdriver
+
+
+def find_buttons(browser):
+	button_list = browser.find_elements_by_xpath("//button")
+	button_list = [i for i in button_list if i.text]
+	for number, button in enumerate(button_list):
+		print(number + 1, button.text)
+
+	return button_list
+
+
+def find_menu_items(browser, search_element):
+	menu_list = browser.find_elements_by_xpath("//a")
+	menu_list = [i for i in menu_list if i.text and i.text.isascii()]
+	if search_element != "store":
+		for number, item in enumerate(menu_list):
+			print(number + 1, item.text)
+
+	return menu_list
+
+
+def iteration(browser, search_element, store_elements):
+	if search_element == "button":
+		element_list = find_buttons(browser)
+		select = input("Select button: ")
+	else:
+		element_list = find_menu_items(browser, search_element)
+		if search_element == "next":
+			element_list = [i for i in element_list if i.text == ">"]
+			select = 1
+		elif search_element == "previous":
+			element_list = [i for i in element_list if i.text == "<"]
+			select = 1
+		elif search_element == "store":
+			element_text_set = {i.text for i in element_list}
+			store_elements.update(element_text_set)
+			for i in sorted(store_elements):
+				print(i)
+			select = ""
+		else:
+			select = input("Select menu item: ")
+
+	if select:
+		try:
+			element_list[int(select) - 1].click()
+		except selenium.common.exceptions.ElementClickInterceptedException as e:
+			browser.execute_script(
+				"arguments[0].click();", element_list[int(select) - 1]
+			)
+
+	return store_elements
+
+
+def main():
+	parser = argparse.ArgumentParser()
+	parser.add_argument("url")
+	args = parser.parse_args()
+
+	browser = webdriver.Firefox()
+	browser.get(f"http://www.{args.url}")
+
+	store_elements = set()
+
+	for i in range(4):
+		search_element = input(
+			"Select element type (button, link, next, previous, store): "
+		)
+		subprocess.call(["reset"])
+		store_elements = iteration(browser, search_element, store_elements)
+
+	for i in range(30):
+		store_elements = iteration(browser, "store", store_elements)
+		store_elements = iteration(browser, "next", store_elements)
+
+	store_elements = iteration(browser, "store", store_elements)
+
+	subprocess.call(["reset"])
+	print(store_elements)
+	Path("elements").write_text("\n".join(store_elements))
+
+
+if __name__ == "__main__":
+	main()
