@@ -11,9 +11,6 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit installer's chunk
 
-#ice id-as"icons-in-terminal" cloneonly nocompile atclone"./install.sh"
-#load sebastiencs/icons-in-terminal
-
 zinit ice silent depth'1' id-as'auto' atinit"
 zstyle ':prezto:module:editor' dot-expansion 'yes'
 zstyle ':prezto:module:editor' key-bindings 'vi' "
