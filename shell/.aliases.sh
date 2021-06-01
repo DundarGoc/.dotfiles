@@ -246,3 +246,6 @@ vmprof() {
 	vmprofshow --lines results.dat | less
 	rm -f results.dat
 }
+
+alias ffmpeg='ffmpeg -hide_banner'
+alias ffprobe='ffprobe -hide_banner'
