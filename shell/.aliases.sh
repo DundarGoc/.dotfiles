@@ -128,6 +128,7 @@ fi
 # Safe/verbose ops
 alias rm="rm -iv"
 alias mv="mv -iv"
+alias cp="cp -iv"
 alias mkdir="mkdir -pv"
 
 # xclip
