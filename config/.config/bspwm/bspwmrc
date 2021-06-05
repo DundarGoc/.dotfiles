@@ -14,7 +14,7 @@ bspc rule -a Zathura desktop='^3' state=tiled follow=on
 killall -q sxhkd feh picom unclutter
 
 sxhkd &
-picom -b -i 0.8 &
+picom --daemon --inactive-opacity=0.8 &
 feh --bg-fill '/home/dundar/.dotfiles/.misc/disco.png'
 unclutter -idle 3.0 -root &
 
