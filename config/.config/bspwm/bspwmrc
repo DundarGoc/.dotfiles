@@ -11,11 +11,18 @@ bspc rule -a Zathura desktop='^3' state=tiled follow=on
 
 ~/.config/polybar/launch.sh
 
-killall -q sxhkd feh picom unclutter
-
+killall sxhkd
 sxhkd &
+
+killall picom
+# Add a small sleep so the new picom process isn't killed immediately
+sleep 0.01
 picom --daemon --inactive-opacity=0.8 &
+
+killall feh
 feh --bg-fill '/home/dundar/.dotfiles/.misc/disco.png'
+
+killall unclutter
 unclutter -idle 3.0 -root &
 
 wmname LG3D
