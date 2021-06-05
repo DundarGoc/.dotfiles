@@ -11,7 +11,7 @@ bspc rule -a Zathura desktop='^3' state=tiled follow=on
 
 ~/.config/polybar/launch.sh
 
-killall -q sxhkd feh compton unclutter
+killall -q sxhkd feh picom unclutter
 
 sxhkd &
 picom -b -i 0.8 &
