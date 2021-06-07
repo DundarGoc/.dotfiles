@@ -6,6 +6,7 @@
 	nuke = "!sh -c \"git checkout $1 && git fetch --all && git reset --hard origin/$1  && git clean -df && git submodule update --init --recursive\" -"
 	bisect-all = !git bisect start && git bisect bad && git bisect good $(git rev-list --max-parents=0 --first-parent HEAD)
 	sync = !git fetch upstream && git reset --hard upstream/$(git branch --show-current)
+	uncommit = reset --hard HEAD~
 [merge]
 	tool = meld
 [rerere]
