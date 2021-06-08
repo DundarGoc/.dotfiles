@@ -28,7 +28,10 @@ gbdd() {
 	git branch --delete "$@"
 }
 alias gc="git commit"
-alias gcd="cd-gitroot"
+gcd() {
+	root_path="$(git rev-parse --show-toplevel)" || return
+	cd "$root_path"
+}
 alias gdc="forgit::diff"
 alias gdc="forgit::diff --cached"
 alias gcl="git clone --recursive"
