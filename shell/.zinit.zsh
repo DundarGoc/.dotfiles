@@ -51,9 +51,6 @@ zinit ice silent depth"1" id-as"auto" wait"1"
 zinit light ael-code/zsh-colored-man-pages
 
 zinit ice silent depth"1" id-as"auto" wait"1"
-zinit light laggardkernel/zsh-thefuck
-
-zinit ice silent depth"1" id-as"auto" wait"1"
 zinit light mollifier/cd-gitroot
 
 zinit ice silent depth'1' id-as'auto' wait"1"
