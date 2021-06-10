@@ -146,7 +146,7 @@ fire() {
 	firefox "$1" NUL
 }
 chrome() {
-	chromium "$1" NUL
+	google-chrome-stable "$1" NUL
 }
 
 # rmdir
