@@ -174,7 +174,7 @@ alias xmax="brightnessctl set 100%"
 alias xmin="brightnessctl set 1%"
 
 # Use make without printing the input and automatically use parallel jobs.
-alias make="make -j -s"
+alias make="make -s"
 
 # So ag doesn't print "Permission denied"
 alias ag="ag --hidden --silent --ignore .git"
