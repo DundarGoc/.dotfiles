@@ -177,7 +177,7 @@ alias xmin="brightnessctl set 1%"
 alias make="make -s"
 
 # So ag doesn't print "Permission denied"
-alias ag="ag --hidden --silent --ignore .git"
+alias ag="ag --hidden --smart-case --silent --ignore .git"
 
 # Make commands human-readable.
 alias du="du -h"
