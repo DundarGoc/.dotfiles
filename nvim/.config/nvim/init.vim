@@ -24,7 +24,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tomasr/molokai'
 Plug 'sjl/badwolf'
 Plug 'TroyFletcher/vim-colors-synthwave'
-Plug 'dracula/vim'
 Plug 'Badacadabra/vim-archery'
 Plug 'mhartington/oceanic-next'
 
