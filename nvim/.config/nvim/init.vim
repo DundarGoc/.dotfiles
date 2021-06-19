@@ -46,10 +46,11 @@ source ~/.vimrc
 "highlight Folded ctermbg=000
 
 "colorscheme dracula
+colorscheme amora
 
 "colorscheme archery
 
-colorscheme OceanicNext
+"colorscheme OceanicNext
 
 "------------------------------------
 "Other settings
