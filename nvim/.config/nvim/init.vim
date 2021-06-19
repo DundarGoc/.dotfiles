@@ -10,7 +10,6 @@ Plug 'embear/vim-uncrustify'
 Plug 'Konfekt/FastFold'
 Plug 'zplugin/zplugin-vim-syntax'
 Plug 'nvie/vim-flake8'
-Plug 'farmergreg/vim-lastplace'
 
 " Language specific plugins
 " Python
