@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 
 import argparse
+import os
 import subprocess
+import sys
+from pathlib import Path
 
 
 def main():
 	parser = argparse.ArgumentParser()
 	parser.add_argument("packages", nargs="*")
 	args = parser.parse_args()
+	BIN = sys.path[0]
 
 	for package in args.packages:
 		try:
@@ -29,6 +33,13 @@ def main():
 					package,
 				]
 			)
+
+	list_path = os.path.join(BIN, "list")
+	installed_packages = subprocess.check_output([list_path], text=True).splitlines()
+	installed_packages.sort()
+
+	pkgfile_path = os.path.join(os.environ["HOME"], ".dotfiles", ".misc", "pkglist.txt")
+	Path(pkgfile_path).write_text("\n".join(installed_packages))
 
 
 if __name__ == "__main__":
