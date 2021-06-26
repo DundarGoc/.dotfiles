@@ -32,6 +32,12 @@ gcd() {
 	root_path="$(git rev-parse --show-toplevel)" || return
 	cd "$root_path"
 }
+gcf() {
+	modified_file_full_path="$(git status --porcelain | awk '{print $2}')"
+	modified_file="$(basename $modified_file_full_path)"
+	git add -A
+	git commit -m "$modified_file"
+}
 alias gdc="forgit::diff"
 alias gdc="forgit::diff --cached"
 alias gcl="git clone --recursive"
