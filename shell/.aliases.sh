@@ -41,6 +41,7 @@ gcf() {
 alias gd="forgit::diff"
 alias gdw="forgit::diff --word-diff"
 alias gdc="forgit::diff --cached"
+alias gdcw="git diff --cached --word-diff"
 alias gcl="git clone --recursive"
 alias gcl1="git clone --depth=1"
 alias gclc="git clean -fd :/"
