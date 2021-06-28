@@ -38,7 +38,7 @@ gcf() {
 	git add -A
 	git commit -m "$modified_file"
 }
-alias gdc="forgit::diff"
+alias gd="forgit::diff"
 alias gdc="forgit::diff --cached"
 alias gcl="git clone --recursive"
 alias gcl1="git clone --depth=1"
