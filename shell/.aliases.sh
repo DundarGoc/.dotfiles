@@ -14,6 +14,7 @@ alias mirror="sudo pacman-mirrors -id"
 alias orphan='yay -Qdtq | yay -Rs -'
 
 # git
+alias amend="git commit --amend --no-verify"
 alias gac="git add .; git commit"
 alias gap="git add -p"
 alias gb="git branch"
