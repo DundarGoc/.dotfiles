@@ -10,6 +10,7 @@ Plug 'embear/vim-uncrustify'
 Plug 'Konfekt/FastFold'
 Plug 'zplugin/zplugin-vim-syntax'
 Plug 'nvie/vim-flake8'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 " Language specific plugins
 " Python
