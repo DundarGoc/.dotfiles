@@ -79,6 +79,7 @@ alias gs="git status"
 alias gopen="git open"
 alias gu="git remote update"
 alias gl1="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+alias up="git upstream"
 
 # vim
 alias vi='$EDITOR'
