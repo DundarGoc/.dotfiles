@@ -8,6 +8,7 @@ Plug 'embear/vim-uncrustify'
 Plug 'Konfekt/FastFold'
 Plug 'zplugin/zplugin-vim-syntax'
 Plug 'nvie/vim-flake8'
+Plug 'farmergreg/vim-lastplace'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 " Language specific plugins
@@ -19,6 +20,8 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 
 " Themes
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'owozsh/amora'
 Plug 'tomasr/molokai'
 Plug 'sjl/badwolf'
 Plug 'TroyFletcher/vim-colors-synthwave'
@@ -44,6 +47,7 @@ source ~/.vimrc
 "highlight Folded ctermbg=000
 
 "colorscheme dracula
+
 colorscheme amora
 
 "colorscheme archery
