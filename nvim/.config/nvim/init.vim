@@ -11,10 +11,6 @@ Plug 'nvie/vim-flake8'
 Plug 'farmergreg/vim-lastplace'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
-" Language specific plugins
-" Python
-Plug 'kalekundert/vim-coiled-snake'
-
 " tmux
 Plug 'edkolev/tmuxline.vim'
 Plug 'christoomey/vim-tmux-navigator'
