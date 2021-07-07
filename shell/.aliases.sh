@@ -28,6 +28,7 @@ gbdd() {
 	git push origin --delete "$@"
 	git branch --delete "$@"
 }
+alias gbu="git branch --unset-upstream"
 alias gc="git commit"
 gcd() {
 	root_path="$(git rev-parse --show-toplevel)" || return
