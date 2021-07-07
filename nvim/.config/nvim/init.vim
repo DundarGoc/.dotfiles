@@ -44,11 +44,11 @@ source ~/.vimrc
 
 "colorscheme dracula
 
-colorscheme amora
+"colorscheme amora
 
 "colorscheme archery
 
-"colorscheme OceanicNext
+colorscheme OceanicNext
 
 "------------------------------------
 "Other settings
