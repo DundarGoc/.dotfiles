@@ -280,3 +280,7 @@ mp4copy() {
 }
 
 alias scc='scc --no-complexity --no-cocomo'
+
+codespell() {
+	command codespell --quiet-level 2 --check-hidden --skip "po" --skip "*spell*" --skip "*test*" --ignore-words-list hist,fo,enew,windo,SER,tabe,sover,ned,dum,sav,tolen,te "$@"
+}
