@@ -25,7 +25,7 @@ gbdr() {
 }
 gbdd() {
 	git push origin --delete "$@"
-	git branch --delete "$@"
+	git branch -D "$@"
 }
 alias gbD="git branch -D"
 alias gbu="git branch --unset-upstream"
