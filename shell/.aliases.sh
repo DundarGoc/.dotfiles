@@ -20,7 +20,6 @@ alias gap="git add -p"
 alias gb="git branch"
 alias gba="git branch --all"
 alias gbd="git branch --delete"
-alias gbD="git branch -D"
 gbdr() {
 	git push origin --delete "$@"
 }
@@ -28,6 +27,7 @@ gbdd() {
 	git push origin --delete "$@"
 	git branch --delete "$@"
 }
+alias gbD="git branch -D"
 alias gbu="git branch --unset-upstream"
 alias gc="git commit"
 gcd() {
