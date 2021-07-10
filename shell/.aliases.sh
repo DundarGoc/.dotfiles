@@ -30,6 +30,10 @@ gbdd() {
 alias gbD="git branch -D"
 alias gbu="git branch --unset-upstream"
 alias gc="git commit"
+gcbb() {
+	git checkout -b "$@"
+	git push --set-upstream origin "$@"
+}
 gcd() {
 	root_path="$(git rev-parse --show-toplevel)" || return
 	cd "$root_path"
