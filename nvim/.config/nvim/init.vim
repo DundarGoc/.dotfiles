@@ -92,6 +92,8 @@ set foldtext=MyFoldText()
 " Make a tab an actual tab.
 set autoindent noexpandtab tabstop=4 shiftwidth=4 softtabstop=-1
 
+set ignorecase
+set smartcase
 
 "------------------------------------
 " Treesitter config
