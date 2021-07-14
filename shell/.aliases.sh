@@ -288,3 +288,35 @@ alias scc='scc --no-complexity --no-cocomo'
 codespell() {
 	command codespell --quiet-level 2 --check-hidden --skip "po" --skip "*spell*" --skip "*test*" --ignore-words-list hist,fo,enew,windo,SER,tabe,sover,ned,dum,sav,tolen,te "$@"
 }
+
+go(){
+	branch="$*"
+	gcbb "$branch"
+	sed -i "s|$*||g" highlight.c
+	git add -A
+	git commit -m "$*"
+	git push
+	gh pr create --fill
+	gh pr edit --add-label typo
+	git switch main
+}
+
+nuke(){
+	if [[  $(pwd) != /home/dundar/programs/test ]];then
+		echo "RUNNING DANGEROUS COMMAND OUTSITE OF TESTING AREA. ABORT"
+		return 1
+	fi
+
+
+	while read -r branch; do
+		[[ -n "$branch" ]] || continue
+
+		git push origin --delete "$branch"
+	done <<< "$(git branch --remotes | grep -v "main" | grep -v "HEAD" | sed 's|origin/||')"
+
+	while read -r branch; do
+		[[ -n "$branch" ]] || continue
+
+		git branch -D "$branch"
+	done <<< "$(git branch | grep -v main)"
+}
