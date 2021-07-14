@@ -320,3 +320,10 @@ nuke(){
 		git branch -D "$branch"
 	done <<< "$(git branch | grep -v main)"
 }
+
+build(){
+	local neovim_path="/home/dundar/programs/neovim"
+
+	make -C "$neovim_path" CMAKE_INSTALL_PREFIX="$neovim_path"
+	make -C "$neovim_path" install
+}
