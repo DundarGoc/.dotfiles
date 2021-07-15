@@ -289,7 +289,7 @@ codespell() {
 	command codespell --quiet-level 2 --check-hidden --skip "po,*spell*,*test*,*utf-8.vim" --ignore-words-list hist,fo,enew,windo,SER,tabe,sover,ned,dum,sav,tolen,te "$@"
 }
 
-go(){
+go() {
 	branch="$*"
 	gcbb "$branch"
 	sed -i "s|$*||g" highlight.c
@@ -301,27 +301,26 @@ go(){
 	git switch main
 }
 
-nuke(){
-	if [[  $(pwd) != /home/dundar/programs/test ]];then
+nuke() {
+	if [[ $(pwd) != /home/dundar/programs/squash-typo-pr ]]; then
 		echo "RUNNING DANGEROUS COMMAND OUTSITE OF TESTING AREA. ABORT"
 		return 1
 	fi
 
-
 	while read -r branch; do
-		[[ -n "$branch" ]] || continue
+		[[ -n $branch ]] || continue
 
 		git push origin --delete "$branch"
-	done <<< "$(git branch --remotes | grep -v "main" | grep -v "HEAD" | sed 's|origin/||')"
+	done <<<"$(git branch --remotes | grep -v "main" | grep -v "HEAD" | sed 's|origin/||')"
 
 	while read -r branch; do
-		[[ -n "$branch" ]] || continue
+		[[ -n $branch ]] || continue
 
 		git branch -D "$branch"
-	done <<< "$(git branch | grep -v main)"
+	done <<<"$(git branch | grep -v main)"
 }
 
-build(){
+build() {
 	local neovim_path="/home/dundar/programs/neovim"
 
 	make -C "$neovim_path" CMAKE_INSTALL_PREFIX="$neovim_path"
