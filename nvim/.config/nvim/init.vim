@@ -95,6 +95,9 @@ set autoindent noexpandtab tabstop=4 shiftwidth=4 softtabstop=-1
 set ignorecase
 set smartcase
 
+" Enable true colors.
+set termguicolors
+
 "------------------------------------
 " Treesitter config
 
