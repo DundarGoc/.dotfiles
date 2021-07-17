@@ -15,6 +15,9 @@ alias orphan='yay -Qdtq | yay -Rs -'
 
 # git
 alias amend="git commit --amend --no-verify --allow-empty"
+alias good="git bisect good"
+alias bad="git bisect bad"
+alias bisect="git bisect start"
 alias gac="git add .; git commit"
 alias gap="git add -p"
 alias gb="git branch"
