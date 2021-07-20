@@ -64,6 +64,7 @@ alias gk="gitk"
 alias gl="git log --graph --full-history --pretty --oneline"
 alias gla="gl --all"
 alias glr="forgit::log HEAD..origin"
+alias gls="git log --stat"
 alias gp="git push"
 gps() {
 	current_branch=$(git rev-parse --abbrev-ref HEAD)
